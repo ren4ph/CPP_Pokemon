@@ -88,7 +88,7 @@ void Party::saveParty() {
         save << p->getSpAtk() << ',';
         save << p->getSpDef() << ',';
         save << p->getSpeed() << ',';
-        std::string isLegen = (p->isLegendary() == 0) ? "True" : "False";
+        std::string isLegen = (p->isLegendary()) ? "True" : "False";
         save << isLegen;
         save << "\n";
     }
