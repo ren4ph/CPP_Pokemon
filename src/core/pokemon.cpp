@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 #include "../battle/move.h"
+#include "../utils/effect_utils.h"
 
 bool Pokemon::operator==(const Pokemon& other) const {
     return name == other.name;
@@ -199,5 +200,7 @@ void Pokemon::printStats() const {
         if (!move) continue;
         std::cout << "  " << move->getName() << ": PP:" << move->getPP() << " / " << move->getMaxPP() << "  Power: " << move->getPower() << "  Accuracy: " << move->getAccuracy() << std::endl;
     }
+    std::cout << "========================" << std::endl;
+    if (majorEffect != StatusEffect::NONE) std::cout << "  " << majorEffect << std::endl;
     std::cout << "\n\n";
 }

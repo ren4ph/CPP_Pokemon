@@ -40,6 +40,17 @@ MoveResult DamagingMove::use(Pokemon& attacker, Pokemon& defender) {
     result.damageDealt = damage;
     result.message = name + " hits for " + std::to_string(damage) + " damage!\n";
 
+    float attackerHP = attacker.getHP();
+    float attackerMaxHP = attacker.getMaxHP();
+    if (recoilFraction > 0) {
+        attacker.takeDamage(damage * recoilFraction);
+        result.message += "It recoils against " + attacker.getName() + " for " + std::to_string(int(std::min(attackerHP, damage * recoilFraction))) + " damage!\n";
+    }
+    if (drainFraction > 0) {
+        attacker.heal(damage * drainFraction);
+        result.message += "The move drains " + std::to_string(int(std::min(attackerMaxHP - attackerHP, damage * drainFraction))) + " to " + attacker.getName() + "!\n";
+    }
+
     if (!hasEffect) return result;
     
     if (!RNG::get().chance(effectChance)) return result;
@@ -47,7 +58,7 @@ MoveResult DamagingMove::use(Pokemon& attacker, Pokemon& defender) {
     defender.applyEffect(effectType);
 
     result.statusApplied = true;
-    result.message = result.message + "It applies effect " + " (placeholder implement statuseffect string conversion)!\n";
+    result.message += "It applies effect (placeholder implement statuseffect string conversion)!\n";
 
     return result;
 }

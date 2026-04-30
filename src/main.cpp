@@ -21,14 +21,10 @@ int main() {
     bulbasaur->addMove(std::make_unique<PhysicalMove>("Tackle", Type::NORMAL, 0, -1, 40));
     bulbasaur->replaceMove(2, std::make_unique<PhysicalMove>("Blizzard", Type::ICE, 5, .70, 120, StatusEffect::FREEZE, .10));
     Pokemon* venusaur = party.getMember(2);
-    venusaur->addMove(std::make_unique<PhysicalMove>("Tackle", Type::NORMAL, 35, -1, 40));
+    venusaur->addMove(std::make_unique<PhysicalMove>("Tackle", Type::NORMAL, 35, -1, 40, .5f, .0f));
 
     std::cout << (bulbasaur->useMove(bulbasaur->getMoveByIndex(0).value(), *venusaur)).message;
     std::cout << (venusaur->useMove(venusaur->getMoveByIndex(0).value(), *bulbasaur)).message;
-    std::cout << bulbasaur->getEffectiveSpeed();
-    bulbasaur->applyEffect(StatusEffect::PARALYSIS);
-    std::cout << bulbasaur->getEffectiveSpeed();
-    bulbasaur->applyEffect(StatusEffect::FREEZE);
     std::string s;
     if (bulbasaur->canMove()) {
         s = bulbasaur->useMove(bulbasaur->getMoveByName("Blizzard").value(), *venusaur).message;

@@ -1,9 +1,8 @@
 #include "../battle/move.h"
 #include "pokemon.h"
 #include "legendary_pokemon.h"
+#include "../utils/effect_utils.h"
 #include <iostream>
-
-
 
 bool LegendaryPokemon::isCatchable() const {
     return false;
@@ -24,5 +23,7 @@ void LegendaryPokemon::printStats() const {
         if (!move) continue;
         std::cout << "  " << move->getName() << ": PP:" << move->getPP() << " / " << move->getMaxPP() << "  Power: " << move->getPower() << "  Accuracy: " << move->getAccuracy() << std::endl;
     }
+    std::cout << "========================" << std::endl;
+    if (majorEffect != StatusEffect::NONE) std::cout << "  " << majorEffect << std::endl;
     std::cout << "\n\n";
 }

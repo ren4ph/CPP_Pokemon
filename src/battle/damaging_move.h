@@ -7,9 +7,13 @@ class Pokemon;
 class DamagingMove : public Move {
     public:
         DamagingMove(std::string name, Type moveType, int PP, float accuracy, int power, StatusEffect effectType, float effectChance)
-            :Move(name, moveType, PP, accuracy), power(power), hasEffect(true), effectType(effectType), effectChance(effectChance) { };
+            :Move(name, moveType, PP, accuracy), power(power), hasEffect(true), effectType(effectType), effectChance(effectChance), recoilFraction(0), drainFraction(0) { };
         DamagingMove(std::string name, Type moveType, int PP, float accuracy, int power)
-            :Move(name, moveType, PP, accuracy), power(power), hasEffect(false), effectType(StatusEffect::NONE), effectChance(0.0) { };
+            :Move(name, moveType, PP, accuracy), power(power), hasEffect(false), effectType(StatusEffect::NONE), effectChance(0.0), recoilFraction(0), drainFraction(0) { };
+        DamagingMove(std::string name, Type moveType, int PP, float accuracy, int power, StatusEffect effectType, float effectChance, float recoilFraction, float drainFraction)
+            :Move(name, moveType, PP, accuracy), power(power), hasEffect(true), effectType(effectType), effectChance(effectChance), recoilFraction(recoilFraction), drainFraction(drainFraction) { };
+        DamagingMove(std::string name, Type moveType, int PP, float accuracy, int power, float recoilFraction, float drainFraction)
+            :Move(name, moveType, PP, accuracy), power(power), hasEffect(false), effectType(StatusEffect::NONE), effectChance(0.0), recoilFraction(recoilFraction), drainFraction(drainFraction) { };
 
         virtual ~DamagingMove() = default;
 
@@ -26,5 +30,6 @@ class DamagingMove : public Move {
         bool hasEffect;
         StatusEffect effectType;
         float effectChance;
-
+        float recoilFraction;
+        float drainFraction;
 };

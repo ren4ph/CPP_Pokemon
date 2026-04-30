@@ -14,17 +14,17 @@ class Pokemon {
         Pokemon(std::string name, Type primaryType, Type secondaryType, int hp, int attack, int defense, int spAtk, int spDef, int speed)
             :name(name), primaryType(primaryType), secondaryType(secondaryType), dualType(primaryType != secondaryType),
              hp(hp), maxHP(hp), attack(attack), defense(defense), spAtk(spAtk), spDef(spDef),
-             speed(speed), criticalChance(speed/512.0) { } 
+             speed(speed), criticalChance(speed/512.0), majorEffect(StatusEffect::NONE) { } 
 
         Pokemon(std::string name, Type primaryType, int hp, int attack, int defense, int spAtk, int spDef, int speed)
             :name(name), primaryType(primaryType), secondaryType(primaryType), dualType(false),
              hp(hp), maxHP(hp), attack(attack), defense(defense), spAtk(spAtk), spDef(spDef),
-             speed(speed), criticalChance(speed/512.0) { }
+             speed(speed), criticalChance(speed/512.0), majorEffect(StatusEffect::NONE) { }
         
         Pokemon(std::string name)
             :name(name), primaryType(Type::NORMAL), secondaryType(Type::NORMAL), dualType(false),
              hp(8), maxHP(8), attack(4), defense(1), spAtk(3), spDef(0),
-             speed(11), criticalChance(11/512.0) { }
+             speed(11), criticalChance(11/512.0), majorEffect(StatusEffect::NONE) { }
         
         virtual ~Pokemon() = default;
         virtual bool isCatchable() const { return true; }
