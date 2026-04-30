@@ -22,9 +22,7 @@ float DamagingMove::getEffectChance() const {
 }
 
 MoveResult DamagingMove::use(Pokemon& attacker, Pokemon& defender) {
-    MoveResult result = {false, 0, false, "Out of pp.\n"};
-
-    std::cout << name << " " << PP << " / " << maxPP << " \n";
+    MoveResult result = {false, 0, true, "Out of pp.\n"};
 
     if (!canUse()) return result;
 
@@ -36,7 +34,7 @@ MoveResult DamagingMove::use(Pokemon& attacker, Pokemon& defender) {
 
     int damage = calcDamage(attacker, defender);
     defender.takeDamage(damage);
-    result.missed = true;
+    result.missed = false;
     result.damageDealt = damage;
     result.message = name + " hits for " + std::to_string(damage) + " damage!\n";
 
