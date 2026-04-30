@@ -1,0 +1,13 @@
+#pragma once
+
+enum class Type {
+    NORMAL, FIRE, WATER, GRASS, PSYCHIC,
+    POISON, ELECTRIC, ICE, FIGHTING, GROUND,
+    FLYING, BUG, ROCK, GHOST, DRAGON,
+    DARK, STEEL, FAIRY, TYPELESS
+};
+
+enum class StatusEffect {
+    NONE, BURN, PARALYSIS, SLEEP, POISON, TOXIC, FREEZE
+};
+
