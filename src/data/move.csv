@@ -1,3 +1,3 @@
-1,Tackle,Normal,35,-1,40,False,None,0,0,False,0,0,Physical,False,None,0
-2,Growl,Normal,40,-1,0,False,None,0,0,False,0,0,Status,True,Attack,0
-3,Vine Whip,Grass,10,-1,35,False,None,0,0,False,0,0,Special,False,None,0
+1,Tackle,Normal,35,-1,40,False,None,0,0,False,0,0,Physical,0,False,False,None,0
+2,Growl,Normal,40,-1,0,False,None,0,0,False,0,0,Status,0,True,False,Attack,0
+3,Vine Whip,Grass,10,-1,35,False,None,0,0,False,0,0,Special,0,False,False,None,0

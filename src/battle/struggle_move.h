@@ -2,10 +2,9 @@
 #include "damaging_move.h"
 
 class StruggleMove : public DamagingMove {
-    StruggleMove()
-        :DamagingMove("Struggle", Type::NORMAL, 254, -1, 50) { };
+  public:
+	StruggleMove() : DamagingMove("Struggle", Type::NORMAL, 254, -1, 50) {};
 
-    MoveResult use(Pokemon& attacker, Pokemon& defender) override;
-    int calcDamage(const Pokemon& attacker, const Pokemon& defender) override;
-}
-;
+	MoveResult use(Pokemon &attacker, Pokemon &defender) override;
+	int calcDamage(const Pokemon &attacker, const Pokemon &defender) override;
+};
